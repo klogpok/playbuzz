@@ -1,0 +1,26 @@
+.AnswerItem {
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border: 1px solid #196a98;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color .4s ease;
+}
+
+.AnswerItem:hover {
+  background-color: rgba(22, 75, 105, .2);
+  transition: all .5s ease;
+}
+
+.AnswerItem.success {
+  background: green;
+}
+
+.AnswerItem.error {
+  background: red;
+}
+
+/* .AnswerItem.error::after {
+  content: 'xxx';
+  position: absolute;
+} */
