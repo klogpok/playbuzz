@@ -1,18 +1,36 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import styles from './Drawer.module.css';
+import Backdrop from '../../UI/Backdrop/Backdrop';
 
-const links = [1, 2, 3];
+const links = [
+  { to: '/', label: 'Quiz List', exact: true },
+  { to: '/auth', label: 'Auth', exact: false },
+  { to: '/quiz-creator', label: 'Quiz Creator', exact: false },
+];
 
 interface IProps {
   isOpen: boolean;
+  onClose: Function;
 }
 
 class Drawer extends Component<IProps, {}> {
+  clickHandler = () => {
+    this.props.onClose();
+  };
+
   renderLinks = () => {
     return links.map((link, index) => {
       return (
         <li key={index}>
-          <a>Link {link}</a>
+          <NavLink
+            to={link.to}
+            exact={link.exact}
+            activeClassName={styles.active}
+            onClick={this.clickHandler}
+          >
+            {link.label}
+          </NavLink>
         </li>
       );
     });
@@ -25,9 +43,12 @@ class Drawer extends Component<IProps, {}> {
       cls.push(styles.close);
     }
     return (
-      <nav className={cls.join(' ')}>
-        <ul>{this.renderLinks()}</ul>
-      </nav>
+      <React.Fragment>
+        <nav className={cls.join(' ')}>
+          <ul>{this.renderLinks()}</ul>
+        </nav>
+        {this.props.isOpen ? <Backdrop onClick={this.props.onClose} /> : null}
+      </React.Fragment>
     );
   }
 }

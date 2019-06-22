@@ -36,6 +36,10 @@
   transition: opacity .3s;
 }
 
-.Drawer ul li a:hover .active {
+.Drawer ul li a:hover {
   opacity: .7;
+}
+
+.Drawer ul li .active {
+  color: #2884f6;
 }
