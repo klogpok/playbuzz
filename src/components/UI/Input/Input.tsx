@@ -5,7 +5,7 @@ interface IProps {
   type?: string;
   label: string;
   value: string;
-  onChange: Function;
+  onChange: any;
   errorMessage?: string;
   valid: boolean;
   touched: boolean;
@@ -37,7 +37,7 @@ const Input: FC<IProps> = ({
   return (
     <div className={cls.join(' ')}>
       <label htmlFor={htmlFor}>{label}</label>
-      <input type={inputType} id={htmlFor} value={value} onChange={() => onChange()} />
+      <input type={inputType} id={htmlFor} value={value} onChange={onChange} />
       {isInvalid(valid, touched, shouldValidate) ? (
         <span>{errorMessage || 'Please, insert correct value'}</span>
       ) : null}
