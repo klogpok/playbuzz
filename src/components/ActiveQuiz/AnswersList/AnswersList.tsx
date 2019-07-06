@@ -16,7 +16,7 @@ const AnswersList = ({ answers, onAnswerClick, answerState }: IProps) => {
           <AnswerItem
             key={answer.id}
             answer={answer}
-            onAnswerClick={onAnswerClick}
+            onAnswerClick={() => onAnswerClick(answer.id)}
             answerState={answerState ? answerState[answer.id] : null}
           />
         );

@@ -2,11 +2,9 @@ import React, { Component, FormEvent } from 'react';
 import styles from './Auth.module.css';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
-
-function validateEmail(email: string) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-}
+import { validate, validateForm } from '../../form/formFramework';
+import { connect } from 'react-redux';
+import { auth } from '../../store/actions/auth';
 
 interface IEmail {
   value: string;
@@ -42,7 +40,11 @@ interface IState {
   isFormValid: boolean;
 }
 
-export class Auth extends Component<{}, IState> {
+interface IProps {
+  auth: Function;
+}
+
+export class Auth extends Component<IProps, IState> {
   state = {
     isFormValid: false,
     formControls: {
@@ -73,35 +75,35 @@ export class Auth extends Component<{}, IState> {
     },
   };
 
-  loginHandler = () => {};
+  loginHandler = () => {
+    this.props.auth(
+      this.state.formControls.email.value,
+      this.state.formControls.password.value,
+      true
+    );
+  };
 
-  registerHandler = () => {};
+  registerHandler = () => {
+    this.props.auth(
+      this.state.formControls.email.value,
+      this.state.formControls.password.value,
+      false
+    );
+
+    // try {
+    //   const response = await axios.post(
+    //     'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB1EgtAubI8bzqe1iaaP0u9eDa6634L1LY',
+    //     authData
+    //   );
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
 
   submitHandler = (event: FormEvent): void => {
     event.preventDefault();
   };
-
-  validateControl(value: string, validation: any): boolean {
-    if (!validation) {
-      return true;
-    }
-
-    let isValid: boolean = true;
-
-    if (validation.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-
-    if (validation.email) {
-      isValid = validateEmail(value) && isValid;
-    }
-
-    if (validation.minLength) {
-      isValid = value.length >= validation.minLength && isValid;
-    }
-
-    return isValid;
-  }
 
   onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>, controlName: string): void => {
     const formControls = { ...this.state.formControls };
@@ -110,13 +112,10 @@ export class Auth extends Component<{}, IState> {
     const control = this.state.formControls[controlName];
     control.value = event.target.value;
     control.touched = true;
-    control.valid = this.validateControl(control.value, control.validation);
+    control.valid = validate(control.value, control.validation);
     formControls[controlName] = control;
 
-    for (let name of Object.keys(formControls)) {
-      isFormValid = formControls[name].valid && isFormValid;
-    }
-
+    isFormValid = validateForm(formControls);
     this.setState({ formControls, isFormValid });
   };
 
@@ -166,4 +165,13 @@ export class Auth extends Component<{}, IState> {
   }
 }
 
-export default Auth;
+const mapDispatchToProps = dispatch => {
+  return {
+    auth: (email, password, isLogin) => dispatch(auth(email, password, isLogin)),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Auth);

@@ -1,6 +1,6 @@
 export interface IQuestion {
   id: number;
   question: string;
-  rightAnswerId: number;
+  rightAnswerId: number | never;
   answers: { id: number; text: string }[];
 }

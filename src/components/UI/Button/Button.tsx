@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Button.module.css';
 
 interface IProps {
-  onClick: Function;
+  onClick: any;
   disabled: boolean;
   type: string;
 }
@@ -10,7 +10,7 @@ interface IProps {
 const Button: React.FC<IProps> = ({ children, onClick, disabled, type }) => {
   const cls = [styles.Button, styles[type]];
   return (
-    <button onClick={() => onClick()} disabled={disabled} className={cls.join(' ')}>
+    <button onClick={onClick} disabled={disabled} className={cls.join(' ')}>
       {children}
     </button>
   );

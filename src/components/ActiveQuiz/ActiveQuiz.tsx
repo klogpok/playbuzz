@@ -25,7 +25,7 @@ const ActiveQuiz = ({ quiz, quizLength, onAnswerClick, answerNumber, answerState
         </small>
       </p>
 
-      <img src="#" alt="xxx" />
+      {/* <img src="#" alt="xxx" /> */}
 
       <AnswersList answers={quiz.answers} onAnswerClick={onAnswerClick} answerState={answerState} />
     </div>
