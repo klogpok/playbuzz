@@ -24,6 +24,11 @@ class Layout extends Component<IProps> {
   render() {
     return (
       <div className={styles.Layout}>
+        <header>
+          <div className="wrapper">
+            <span>Playbazz</span>
+          </div>
+        </header>
         <Drawer
           isOpen={this.state.menu}
           onClose={this.menuCloseHandler}

@@ -9,3 +9,26 @@
   flex-direction: column;
   flex-grow: 1;
 }
+
+.Layout header {
+  height: 50px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #3f78bf;
+  
+}
+
+.Layout header > div {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.Layout header span {
+  display: block;  
+  font-size: 30px;
+  color: azure;
+}

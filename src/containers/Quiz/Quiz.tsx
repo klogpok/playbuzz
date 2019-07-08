@@ -34,7 +34,7 @@ class Quiz extends Component<IProps & RouteComponentProps, {}> {
     return (
       <div className={styles.Quiz}>
         <div className={styles.quizWrapper}>
-          <h1>Answer to the questions</h1>
+          {/* <h1>Answer to the questions</h1> */}
 
           {this.props.isLoading || !this.props.quiz ? (
             <Loader />

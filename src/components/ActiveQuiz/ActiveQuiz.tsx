@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ActiveQuiz.module.css';
 import AnswersList from './AnswersList/AnswersList';
 import { IQuestion } from '../../models/IQuestion';
+import ProgressBar from './ProgressBar/ProgressBar';
 
 interface IProps {
   quiz: IQuestion;
@@ -14,18 +15,22 @@ interface IProps {
 const ActiveQuiz = ({ quiz, quizLength, onAnswerClick, answerNumber, answerState }: IProps) => {
   return (
     <div className={styles.ActiveQuiz}>
-      <p className={styles.Question}>
-        <span>
+      <div className={styles.Question}>
+        {/* <span>
           <strong>
             {answerNumber}. {quiz.question}?
           </strong>
-        </span>
+        </span> */}
+        <ProgressBar quizLength={quizLength} answerNumber={answerNumber} />
         <small>
-          {answerNumber} from {quizLength}
+          {answerNumber} / {quizLength}
         </small>
-      </p>
+      </div>
 
-      {/* <img src="#" alt="xxx" /> */}
+      <div className={styles.image_wrapper}>
+        <img src="/img/harry/1.jpg" alt="Avatar" />
+        <span className={styles.question_text}>{quiz.question}</span>
+      </div>
 
       <AnswersList answers={quiz.answers} onAnswerClick={onAnswerClick} answerState={answerState} />
     </div>

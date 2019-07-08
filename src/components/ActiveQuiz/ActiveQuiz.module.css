@@ -1,7 +1,7 @@
 .ActiveQuiz {
   margin: 0 10px;
   padding: 20px;
-  border: 2px solid #258dc8;
+  border: 1px solid #258dc8;
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -9,4 +9,34 @@
 .Question {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
+  height: 25px;
+}
+
+.Question small {
+  height: 25px;
+  line-height: 25px;
+  font-size: 16px;
+}
+
+.ActiveQuiz .image_wrapper {
+  position: relative;
+}
+
+.ActiveQuiz img {
+  width: 100%;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.ActiveQuiz .question_text {
+  position: absolute;
+  bottom: 30px;
+  left: 15px;
+  max-width: 505px;
+  padding: 5px;
+  background: #fff;
+  color: #009cff;
+  font-size: 18px;
+  font-weight: bold;
 }
