@@ -35,7 +35,8 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 300px;
-  height: fit-content;
+  /* height: fit-content; */
+  height: 255px;
   margin: 0px 25px 25px 0;
   text-align: center;
   background: #feffff;

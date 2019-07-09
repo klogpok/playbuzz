@@ -30,10 +30,10 @@
 }
 
 .success {
-  background: green;
+  background: rgb(24, 126, 24);
 }
 
 .primary {
-  background: #2884f6;
+  background: #3f78bf;
   color: #000000;
 }

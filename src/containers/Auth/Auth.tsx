@@ -89,16 +89,6 @@ export class Auth extends Component<IProps, IState> {
       this.state.formControls.password.value,
       false
     );
-
-    // try {
-    //   const response = await axios.post(
-    //     'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB1EgtAubI8bzqe1iaaP0u9eDa6634L1LY',
-    //     authData
-    //   );
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   submitHandler = (event: FormEvent): void => {

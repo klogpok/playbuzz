@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './FinishedQuiz.module.css';
-import { IQuestion } from '../../models/IQuestion';
+// import { IQuestion } from '../../models/IQuestion';
 import Button from '../UI/Button/Button';
 
 interface IProps {
   results: any;
-  quiz: Array<IQuestion>;
+  // quiz: Array<IQuestion>;
+  quiz: any;
   onRetry: Function;
 }
 
@@ -37,16 +38,19 @@ const FinishedQuiz: React.FC<IProps> = ({ results, quiz, onRetry }) => {
 
   return (
     <div className={styles.FinishedQuiz}>
-      <ul>{renderResults()}</ul>
+      <div className={styles.image_wrapper}>
+        <img src={`/img/${quiz[quiz.length - 1].imgTitle}`} alt="" />
+      </div>
+      {/* <ul>{renderResults()}</ul> */}
       <p>
-        {successCount} correct answers from {quiz.length}
+        {successCount} correct answers from {quiz.length - 1}
       </p>
       <div>
         <Button onClick={() => onRetry()} disabled={false} type="primary">
           retry Again
         </Button>
         <Link to="/">
-          <Button onClick={() => onRetry()} disabled={false} type="success">
+          <Button onClick={() => onRetry()} disabled={false} type="primary">
             To list of quizzes
           </Button>
         </Link>

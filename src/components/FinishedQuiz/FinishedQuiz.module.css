@@ -4,12 +4,19 @@
   border: 2px solid #196a98;
   border-radius: 5px;
   margin: 0 10px;
+  text-align: center;
 }
 
 .FinishedQuiz ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.FinishedQuiz p {
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: 500;
 }
 
 .FinishedQuiz li i {
@@ -22,4 +29,12 @@
 
 .error {
   color: red;
+}
+
+.image_wrapper {
+  margin-bottom: 30px;
+}
+
+.image_wrapper img {
+  width: 100%;
 }

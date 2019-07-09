@@ -6,25 +6,23 @@ import { connect } from 'react-redux';
 import { fetchQuizes } from '../../store/actions/quiz';
 
 interface IProps {
-  quizes: Array<{ id: string; name: string }>;
+  quizes: Array<{ id: string; name: string; imgTitle: string }>;
   isLoading: boolean;
   fetchQuizes: Function;
 }
 
 export class QuizList extends Component<IProps, {}> {
   renderList = () => {
-    return this.props.quizes.map((quiz: { id: string; name: string }) => {
+    return this.props.quizes.map((quiz: { id: string; name: string; imgTitle: string }) => {
       return (
         <NavLink to={`/quiz/${quiz.id}`} key={quiz.id}>
           <div className={styles.card}>
             {/* <img src={`${process.env.PUBLIC_URL}/img/harry/h1.jpg alt="Avatar"`} /> */}
-            <img src="img/harry/title.jpg" alt="Avatar" />
+            <img src={`/img/${quiz.imgTitle}`} alt="Avatar" />
             <div className="container">
               <h4>
-                {/* <b>{quiz.name}</b> */}
-                <b>How Well Do You Know These Harry Potter Spells</b>
+                <b>{quiz.name}</b>
               </h4>
-              {/* <p>Architect & Engineer</p> */}
             </div>
           </div>
         </NavLink>
@@ -37,17 +35,13 @@ export class QuizList extends Component<IProps, {}> {
   }
 
   render() {
-    console.log('public url: ', process.env.PUBLIC_URL);
     return (
       <div className={styles.QuizList}>
-        {/* <div> */}
-        {/* <h1>Quiz List</h1> */}
         {this.props.isLoading && this.props.quizes.length !== 0 ? (
           <Loader />
         ) : (
           <div className={styles.wrapper}>{this.renderList()}</div>
         )}
-        {/* </div> */}
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './Quiz.module.css';
 import ActiveQuiz from '../../components/ActiveQuiz/ActiveQuiz';
 import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';
-import { IQuestion } from '../../models/IQuestion';
+// import { IQuestion } from '../../models/IQuestion';
 import { RouteComponentProps } from 'react-router-dom';
 import Loader from '../../components/UI/Loader/Loader';
 import { connect } from 'react-redux';
@@ -13,11 +13,13 @@ interface IProps {
   answerState: any;
   isFinished: boolean;
   results: any;
-  quiz: Array<IQuestion>;
+  // quiz: Array<IQuestion>;
+  quiz: any;
   isLoading: boolean;
   fetchQuizById: Function;
   quizAnswerClick: Function;
   retryQuiz: Function;
+  quizName: string;
 }
 
 class Quiz extends Component<IProps & RouteComponentProps, {}> {
@@ -47,8 +49,9 @@ class Quiz extends Component<IProps & RouteComponentProps, {}> {
           ) : (
             <ActiveQuiz
               quiz={this.props.quiz[this.props.activeQuestion]}
+              quizName={this.props.quiz[this.props.quiz.length - 1].quizName}
               onAnswerClick={this.props.quizAnswerClick}
-              quizLength={this.props.quiz.length}
+              quizLength={this.props.quiz.length - 1}
               answerNumber={this.props.activeQuestion + 1}
               answerState={this.props.answerState}
             />

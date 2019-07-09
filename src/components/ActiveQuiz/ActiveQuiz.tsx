@@ -10,25 +10,28 @@ interface IProps {
   quizLength: number;
   answerNumber: number;
   answerState: any;
+  quizName?: string;
 }
 
-const ActiveQuiz = ({ quiz, quizLength, onAnswerClick, answerNumber, answerState }: IProps) => {
+const ActiveQuiz = ({
+  quiz,
+  quizLength,
+  onAnswerClick,
+  answerNumber,
+  answerState,
+  quizName,
+}: IProps) => {
   return (
     <div className={styles.ActiveQuiz}>
+      <h2>{quizName}</h2>
       <div className={styles.Question}>
-        {/* <span>
-          <strong>
-            {answerNumber}. {quiz.question}?
-          </strong>
-        </span> */}
         <ProgressBar quizLength={quizLength} answerNumber={answerNumber} />
         <small>
           {answerNumber} / {quizLength}
         </small>
       </div>
-
       <div className={styles.image_wrapper}>
-        <img src="/img/harry/1.jpg" alt="Avatar" />
+        <img src={`/img/${quiz.imageSrc}`} alt="Avatar" />
         <span className={styles.question_text}>{quiz.question}</span>
       </div>
 

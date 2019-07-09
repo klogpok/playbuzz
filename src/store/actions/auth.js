@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { AUTH_SUCCESS, AUTH_LOGOUT } from './actionTypes';
+import config from '../../config/config';
 
 export const auth = (email, password, isLogin) => {
   return async dispatch => {
@@ -9,12 +10,14 @@ export const auth = (email, password, isLogin) => {
       returnSecureToken: true,
     };
 
-    let url =
-      'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB1EgtAubI8bzqe1iaaP0u9eDa6634L1LY';
+    let url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${
+      config.secretKey
+    }`;
 
     if (isLogin) {
-      url =
-        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyB1EgtAubI8bzqe1iaaP0u9eDa6634L1LY';
+      url = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${
+        config.secretKey
+      }`;
     }
 
     const response = await axios.post(url, authData);

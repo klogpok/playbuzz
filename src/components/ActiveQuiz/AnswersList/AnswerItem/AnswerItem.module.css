@@ -4,6 +4,7 @@
   cursor: pointer;
   transition: background-color .4s ease;
   font-weight: 500;
+  position: relative;
 }
 
 .AnswerItem:last-child {
@@ -15,10 +16,23 @@
   transition: all .5s ease;
 }
 
-.AnswerItem.success {
-  background: green;
+.AnswerItem.success::after {
+  font-family: "Font Awesome 5 Free"; 
+  font-size: 18px;
+  font-weight: 900; 
+  content: "\f058";
+  position: absolute;
+  top: 30%;
+  right: 10px;
+  color: green;
 }
 
-.AnswerItem.error {
-  background: red;
+.AnswerItem.error::after {
+  font-family: "Font Awesome 5 free";
+  font-weight: 900; 
+  content: "\f057";
+  position: absolute;
+  top: 30%;
+  right: 10px;
+  color: red;
 }
