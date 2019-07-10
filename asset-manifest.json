@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/playbuzz/static/css/main.8c37c653.chunk.css",
+    "main.js": "/playbuzz/static/js/main.5a2d67ec.chunk.js",
+    "main.js.map": "/playbuzz/static/js/main.5a2d67ec.chunk.js.map",
+    "runtime~main.js": "/playbuzz/static/js/runtime~main.5ab3009e.js",
+    "runtime~main.js.map": "/playbuzz/static/js/runtime~main.5ab3009e.js.map",
+    "static/js/2.04ed7b43.chunk.js": "/playbuzz/static/js/2.04ed7b43.chunk.js",
+    "static/js/2.04ed7b43.chunk.js.map": "/playbuzz/static/js/2.04ed7b43.chunk.js.map",
+    "index.html": "/playbuzz/index.html",
+    "precache-manifest.0692e39f19a487abd54dc0da296abafc.js": "/playbuzz/precache-manifest.0692e39f19a487abd54dc0da296abafc.js",
+    "service-worker.js": "/playbuzz/service-worker.js",
+    "static/css/main.8c37c653.chunk.css.map": "/playbuzz/static/css/main.8c37c653.chunk.css.map"
+  }
+}
